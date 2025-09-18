@@ -1,0 +1,22 @@
+# Ignorar entorno virtual
+venv/
+
+# Archivos compilados de Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Archivos temporales
+*.log
+*.tmp
+
+# Archivos de sistema
+.DS_Store
+Thumbs.db
+
+# Carpeta donde se guardan los videos
+videos/
+
+# Configuración local (si la tuvieras)
+.env

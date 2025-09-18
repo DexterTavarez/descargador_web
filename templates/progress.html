@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Descargando...</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <!-- Botón modo oscuro -->
+    <button id="toggle-dark">🌙</button>
+
+    <!-- Logo centrado arriba y clicable -->
+    <div class="logo">
+        <a href="{{ url_for('index') }}">
+            <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo">
+        </a>
+    </div>
+
+    <!-- Contenedor principal del progreso -->
+    <div class="container">
+        <h2>Descargando...</h2>
+        <div class="progress-bar">
+            <div class="progress-fill" id="barra"></div>
+        </div>
+        <p id="porcentaje">0%</p>
+        <div id="descarga-completa" style="display:none;">
+            <a id="btn-descargar" href="#">Descargar archivo</a>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='darkmode.js') }}"></script>
+    <script>
+        const progreso_id = "{{ progreso_id }}";
+        const barra = document.getElementById('barra');
+        const porcentaje_texto = document.getElementById('porcentaje');
+        const div_descargar = document.getElementById('descarga-completa');
+        const btn_descargar = document.getElementById('btn-descargar');
+
+        function actualizarProgreso() {
+            fetch("/progreso/" + progreso_id)
+                .then(res => res.text())
+                .then(data => {
+                    barra.style.width = data;
+                    porcentaje_texto.textContent = data;
+                    if(data !== "100%") {
+                        setTimeout(actualizarProgreso, 500);
+                    } else {
+                        porcentaje_texto.textContent = "Descarga completada";
+                        btn_descargar.href = "/descargar_final/" + progreso_id;
+                        div_descargar.style.display = "block";
+                    }
+                });
+        }
+
+        actualizarProgreso();
+    </script>
+</body>
+</html>

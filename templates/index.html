@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Descargador de Videos</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <!-- Botón modo oscuro en la esquina -->
+    <button id="toggle-dark">🌙</button>
+
+    <!-- Logo clicable en lugar de "Descargar video" -->
+    <div class="logo">
+        <a href="{{ url_for('index') }}">
+            <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo">
+        </a>
+    </div>
+
+    <!-- Contenedor principal -->
+    <div class="container">
+        <form method="POST">
+            <input type="text" name="url" placeholder="Pega aquí la URL del video..." required>
+            <button type="submit">Descargar</button>
+        </form>
+    </div>
+
+    <script src="{{ url_for('static', filename='darkmode.js') }}"></script>
+</body>
+</html>

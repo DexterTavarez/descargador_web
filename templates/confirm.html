@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Archivo existe</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <!-- Botón modo oscuro -->
+    <button id="toggle-dark">🌙</button>
+
+    <!-- Logo centrado arriba y clicable -->
+    <div class="logo">
+        <a href="{{ url_for('index') }}">
+            <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo">
+        </a>
+    </div>
+
+    <!-- Contenedor principal del formulario -->
+    <div class="container">
+        <h2>El archivo ya existe</h2>
+        <form method="POST" action="{{ url_for('confirm') }}">
+            <input type="hidden" name="url" value="{{ url }}">
+            <label>Ingresa un nuevo nombre o acepta el sugerido:</label>
+            <input type="text" name="nuevo_nombre" value="{{ archivo }}" required>
+            <button type="submit">Descargar</button>
+            <button type="submit" name="cancelar" value="sí">Cancelar</button>
+        </form>
+    </div>
+
+    <script src="{{ url_for('static', filename='darkmode.js') }}"></script>
+</body>
+</html>
