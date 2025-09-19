@@ -20,3 +20,7 @@ videos/
 
 # Configuración local (si la tuvieras)
 .env
+
+
+*.exe
+*.mp4
