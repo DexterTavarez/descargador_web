@@ -23,7 +23,7 @@ Incluye:
 
 1. Clona o descarga este repositorio.  
    ```bash
-   git clone https://github.com/tu_usuario/descargador_web.git
+   git clone https://github.com/DexterTavarez/descargador_web.git
    cd descargador_web
    ```
 
